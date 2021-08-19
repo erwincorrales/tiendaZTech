@@ -1,0 +1,42 @@
+GET http://localhost:3001/api/customers
+###
+
+GET http://localhost:3001/api/customers/73122212
+###
+
+POST http://localhost:3001/api/customers 
+Content-Type: application/json
+
+{
+    "nit"  : 73122212,
+    "name" : "Lina Corrales",
+    "addr" : "Clle 41 N 14-62 2do piso",
+    "phone": "00000",
+    "email": "linav@hotmail.com"
+}
+###
+
+PATCH http://localhost:3001/api/customers 
+Content-Type: application/json
+
+{
+    "nit"  : 73122212,
+    "name" : "Lina Corrales Torres",
+    "addr" : "Clle 41 N 14-62 2do piso",
+    "phone": "00000",
+    "email": "linav@hotmail.com"
+}
+###
+
+POST http://localhost:3001/login 
+Content-Type: application/json
+
+{
+    "user" : "zabud",
+    "password" : "1234"
+}
+
+###
+
+DELETE http://localhost:3001/api/customers/73122212
+###
