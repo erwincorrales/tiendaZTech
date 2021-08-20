@@ -3,7 +3,7 @@ const express = require('express');
 const Router = express.Router();
 
 const db = require('../database/db');
-const { authMiddleware } = require('./../auth/jwt')
+const { authMiddleware } = require('./../jwt/jwt')
 
 Router.get('/api/products', authMiddleware, async (_,res)=>{
     try {
@@ -47,7 +47,7 @@ Router.patch('/api/product', authMiddleware, async(req,res)=>{
         response = await db.consulta(`SELECT * from products WHERE id= ${id} `)
         return res.json({product:response[0]})
     } catch (error) {
-        return res.json(error)
+        return res.json({error})
     }
 })
 
@@ -57,7 +57,7 @@ Router.delete('/api/product/:id', authMiddleware, async(req,res)=>{
         const response = await db.consulta(`DELETE FROM products WHERE id = ${id}`)
         return res.json(response)
     } catch (error) {
-        res.json(error)
+        res.json({error})
     }
 })
 

@@ -26,19 +26,17 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
     }
 
    const validate = () =>{
-       
        let brand = false, description = false, stock= false, price= false, flag=true
-       if(!product?.brand) {brand = true, flag = true}
-       if(isNaN(!product?.price)) {price = true, flag = true}
-       if(isNaN(!product?.description)) {description = true, flag = true}
-       if(isNaN(!product?.stock)) {stock = true, flag = true}
-
-       console.log({brand, description, stock, price, flag})
-
+       if(!product.brand) {brand = true, flag = false}
+       if(isNaN(!product.price)) {price = true, flag = false}
+       if(!product.description) {description = true, flag = false}
+       if(isNaN(!product?.stock)) {stock = true, flag = false}
+       setErrors({brand, description, stock, price})
        return flag
    }
 
-    const handleSubmit = async () =>{
+    const handleSubmit = async e =>{
+        e.preventDefault()
         if(validate()){
             if(id){
                 //update product
@@ -90,35 +88,37 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
     
     return(
         <>
-            <StyledButton className='my-2 float-right' onClick={handleToggle}>+ Add</StyledButton>
+            <StyledButton className='my-2 float-right' variant='dark' size='sm' onClick={handleToggle}>+ Add Product</StyledButton>
             <Modal show={show} onHide={handleToggle}>
                 <Modal.Header closeButton >
                     {id ? 'Edit' : 'Add'} Product
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Group className="mb-2">
-                        Brand
-                        <Form.Control type="text"name='brand' value={product?.brand} onChange={handleChange} isInvalid={errors.brand} required/>
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        Description
-                        <Form.Control type="text" name='description' value={product?.description}  onChange={handleChange} isInvalid={errors.description} required/>
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        Price
-                        <Form.Control type="number" name='price' value={product?.price}  onChange={handleChange} isInvalid={errors.price} required/>
-                    </Form.Group>
-                    <Form.Group className="mb-2">
-                        Stock
-                        <Form.Control type="number" name='stock' value={product?.stock} onChange={handleChange} isInvalid={errors.stock} required/>
-                    </Form.Group>
-                    <div className='d-flex justify-content-between'>
-                        <Button variant='outline-dark' onClick={handleToggle}>Back</Button>
-                    <div>
-                        <Button variant='primary' className='mr-2' onClick={handleSubmit}>{id ? 'Edit' : 'Save' }</Button>
-                        <Button variant='danger' onClick={()=>handleDelete(id)}>Delete</Button>
-                    </div>
-                    </div>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-2">
+                            Brand
+                            <Form.Control type="text"name='brand' value={product?.brand} onChange={handleChange} isInvalid={errors.brand} required/>
+                        </Form.Group>
+                        <Form.Group className="mb-2">
+                            Description
+                            <Form.Control type="text" name='description' value={product?.description}  onChange={handleChange} isInvalid={errors.description} required/>
+                        </Form.Group>
+                        <Form.Group className="mb-2">
+                            Price
+                            <Form.Control type="number" name='price' value={product?.price}  onChange={handleChange} isInvalid={errors.price} required/>
+                        </Form.Group>
+                        <Form.Group className="mb-2">
+                            Stock
+                            <Form.Control type="number" name='stock' value={product?.stock} onChange={handleChange} isInvalid={errors.stock} required/>
+                        </Form.Group>
+                        <div className='d-flex justify-content-between py-2'>
+                            <Button variant='outline-dark' onClick={handleToggle}>Back</Button>
+                            <div className='flex-shrink-0'>
+                                <Button variant='primary' className='mr-2' type='submit'>{id ? 'Edit' : 'Save' }</Button>
+                                <Button variant='danger' onClick={()=>handleDelete(id)}>Delete</Button>
+                            </div>
+                        </div>
+                    </Form>
                 </Modal.Body>
             </Modal>
             <ToastMessage message={toastMessage} close={setToastMessage} />
@@ -127,7 +127,7 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
 }
 
 const StyledButton = styled(Button)`
-    width: 80px;
+    width: 150px;
     height: 40px;
 `
 

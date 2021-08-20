@@ -10,7 +10,7 @@ const ToastMessage = ({message, close})=>{
     
     return(
         <Div 
-            className='bg-light p-3 rounded shadow position-absolute'  
+            className='bg-light py-2 px-4 rounded shadow position-absolute'  
             style={{display: message ? 'inline' : 'none'}}
         >
             {message}
@@ -20,7 +20,7 @@ const ToastMessage = ({message, close})=>{
 
 const Div = styled.div`
     top: 10px;
-    right:10px;
+    right:0px;
 `
 
 export default ToastMessage

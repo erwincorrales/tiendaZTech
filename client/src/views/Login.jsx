@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
 import { Card, Container, Button, FormControl } from 'react-bootstrap'
 import styled from 'styled-components'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import authService from '../services/authService'
 
@@ -24,9 +24,9 @@ const Login = () =>{
            
             const res = await authService.authenticate(credentials)
             if(!res.error) {
-                console.log(res)
                 sessionStorage.setItem('e1TiendaToken', JSON.stringify(res))
-                history.replace('/main');
+                console.log(res)
+                history.push('/main/products');
             }
             else
                 setErrors({username: true, password: true})
@@ -52,11 +52,10 @@ const Login = () =>{
     
 }
 
-
-
 //style
 const LoginContainer = styled(Card)`
     max-width: 400px;
     background-color: rgba(0,0,0,.2);
 `
+
 export default Login

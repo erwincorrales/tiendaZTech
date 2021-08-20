@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap'
 
 const VendorDashboard = () =>{
     return(
-        <Container fluid>
+        <Container fluid className='vh-100'>
             VendorDashboard
         </Container>
     )

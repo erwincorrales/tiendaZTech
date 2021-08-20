@@ -3,7 +3,7 @@ const express = require('express');
 const Router = express.Router();
 
 const db = require('../database/db');
-const { authMiddleware } = require('./../auth/jwt')
+const { authMiddleware } = require('./../jwt/jwt')
 
 Router.get('/api/vendors', authMiddleware, async (_,res)=>{
     try {
