@@ -3,7 +3,9 @@ import { Card, Container, Button, FormControl } from 'react-bootstrap'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
-import authService from '../services/authService'
+// import './../services/axiosInterceptor'
+
+import authService from '../services/auth'
 
 const Login = () =>{
     const [ errors, setErrors ] = useState({username: false, password: false})

@@ -19,7 +19,7 @@ const ToastMessage = ({message, close})=>{
 }
 
 const Div = styled.div`
-    top: 10px;
+    bottom: 80px;
     right:0px;
 `
 

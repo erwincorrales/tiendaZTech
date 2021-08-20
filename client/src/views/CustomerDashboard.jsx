@@ -4,7 +4,7 @@ import Customer from '../components/Customers/Customer'
 import CustomerDetails from '../components/Customers/CustomerDetails'
 import ToastMessage from '../components/common/Toast'
 
-import customerService from '../services/customerService'
+import customerService from '../services/customer'
 
 const CustomerDashboard = () =>{
     const [customers, setCustomers] = useState([])
@@ -40,7 +40,7 @@ const CustomerDashboard = () =>{
     return(
         <>
             <CustomerDetails nit={customerId} externalRefresh={handleRefreshCustomerList} setNit={setCustomerId}/>
-            <Container fluid className ='text-white overflow-auto' style={{height: 'calc(100vh - 100px)'}}>
+            <Container fluid className ='text-white overflow-auto'>
             {
                 customers?.map((customer, key)=>(
                         <Customer customer={customer} key={key} setNit={setCustomerId} handleDelete={handleDelete}/>

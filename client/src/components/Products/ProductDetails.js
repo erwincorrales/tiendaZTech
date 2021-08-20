@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import styled from 'styled-components';
-import productService from '../../services/productService';
+import productService from '../../services/product';
 import ToastMessage from '../common/Toast';
 
 const ProductDetails = ({id, setId, productListRefresh}) =>{
@@ -89,9 +89,9 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
     return(
         <>
             <StyledButton className='my-2 float-right' variant='dark' size='sm' onClick={handleToggle}>+ Add Product</StyledButton>
-            <Modal show={show} onHide={handleToggle}>
+            <Modal show={show} onHide={handleToggle} centered>
                 <Modal.Header closeButton >
-                    {id ? 'Edit' : 'Add'} Product
+                    <h5>{id ? 'Edit' : 'Add'} Product</h5>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
@@ -114,7 +114,7 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
                         <div className='d-flex justify-content-between py-2'>
                             <Button variant='outline-dark' onClick={handleToggle}>Back</Button>
                             <div className='flex-shrink-0'>
-                                <Button variant='primary' className='mr-2' type='submit'>{id ? 'Edit' : 'Save' }</Button>
+                                <Button variant='success' className='mr-2' type='submit'>{id ? 'Edit' : 'Save' }</Button>
                                 <Button variant='danger' onClick={()=>handleDelete(id)}>Delete</Button>
                             </div>
                         </div>

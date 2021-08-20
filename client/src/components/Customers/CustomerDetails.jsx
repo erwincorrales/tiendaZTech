@@ -1,6 +1,6 @@
 import React , { useEffect, useState } from 'react'
 import {Button, Form, Modal} from 'react-bootstrap' 
-import customerService from '../../services/customerService'
+import customerService from '../../services/customer'
 import ToastMessage from '../common/Toast'
 
 const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
@@ -31,6 +31,7 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
         if(nit){
             const res = await customerService.updateCustomer(customer)
             if(!res.error){
+                setToastMessage('Customer Updated!')
                 externalRefresh()
                 handleToggle()
             }
@@ -39,6 +40,7 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
         }else{
             const res = await customerService.saveCustomer(customer)
             if(!res.error){
+                setToastMessage('Customer Saved!')
                 externalRefresh()
                 handleToggle()
             }
@@ -62,8 +64,8 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
 
     return (
         <>
-            <Button className='mt-2' size='sm' variant ='dark' onClick={handleToggle}>+ Add Customer</Button>
-            <Modal show={show} onHide= {handleToggle} >
+            <Button className='mt-5 pt-2' size='sm' variant ='dark' onClick={handleToggle}>+ Add Customer</Button>
+            <Modal show={show} onHide= {handleToggle} centered >
                 <Modal.Header closeButton>
                     {nit ? 'Edit' : 'Add'} Customer
                 </Modal.Header>

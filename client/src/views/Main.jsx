@@ -7,6 +7,7 @@ import '../services/axiosInterceptor'
 import ProductDashboard from './ProductsDashboard'
 import CustomerDashboard from './CustomerDashboard'
 import VendorDashboard from './VendorDashboard'
+import InvoiceDashboard from './InvoiceDashboard'
 import NotFound from './NotFound'
 
 const Main = () =>{
@@ -18,6 +19,7 @@ const Main = () =>{
                     <Route path='/main/products' component={ProductDashboard}/>
                     <Route path='/main/customers' component={CustomerDashboard}/>
                     <Route path='/main/vendors' component={VendorDashboard}/>
+                    <Route path='/main/invoices' component={InvoiceDashboard}/>
                     <Route component={NotFound} />
                 </Switch>
             </Container>

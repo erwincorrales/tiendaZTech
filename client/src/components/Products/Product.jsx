@@ -10,7 +10,7 @@ const Product = ({item:{id, brand, description, price, stock }, toCart, setId}) 
     }
 
     return(
-        <Div className='shadow py-2 px-3 m-2 bg-warning rounded text-center'>
+        <Div className='shadow-sm py-2 px-3 m-2 rounded  text-center text-light'>
             <Title onClick={()=>toCart(id)}>
                 <div className='d-flex justify-content-between'>
                     <p className='small m-0'>{brand}</p>
@@ -21,9 +21,11 @@ const Product = ({item:{id, brand, description, price, stock }, toCart, setId}) 
             </Title>
            <div className='d-flex justify-content-between align-items-center ' style={{fontSize: 12}}>
                 <Button 
-                    size='sm' variant='link'><i className='small'
-                    onClick={()=>setId(id)}
-                >edit</i></Button>
+                    size='sm' variant='link'>
+                        <i className='small text-warning'
+                            onClick={()=>setId(id)}
+                        >Edit</i>
+                </Button>
                 <div>stock: {stock}</div>
            </div>
         </Div>
@@ -31,12 +33,16 @@ const Product = ({item:{id, brand, description, price, stock }, toCart, setId}) 
 }
 
 const Div = styled.div`
-    width: 180px;
+    width: 160px;
     max-height: fit-content;
+    background-color: darkgreen ;
+    &:hover{
+        background-color: green;
+    }
 `
 
 const Title = styled.div`
-    cursor: pointer
+    cursor: pointer;
 `
 
 export default Product
