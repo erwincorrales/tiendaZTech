@@ -26,6 +26,10 @@ module.exports = {
                         loader: "html-loader"
                     }
                 ]
+            },
+            {
+                test: /\.css$/,
+                use:[ 'style-loader', 'css-loader']
             }
         ]
     },
@@ -34,5 +38,11 @@ module.exports = {
             template: './public/index.html',
             filename: './index.html'
         })
-    ] 
+    ],
+    devServer: {
+        historyApiFallback: true,
+        proxy: {
+            "*": "http://localhost:3001"
+        }
+    }
 }
