@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-=======
-# tiendaZTech
-Test
-
->>>>>>> db578472c4406c25e41d3d1177b4ac665c6e2198
-Tienda ZTECH
+Tienda ZTECH.
 Nodejs, React, and MySQL integration project made from scratch. It can manage Customers, Products and Invoices. Authentication was made with jwt token and axios response interceptor
 
 CLONE REPOSITORY:
 git clone https://github.com/erwincorrales/tiendaZTech.git
-
 
 CONFIG DEPENDENCIES
 npm install
@@ -42,15 +35,14 @@ DASHBOARDS:
 Products dashboard and CRUD
 Customer dashboard
 
-
-there is a issue that sometimes we have to authenticate again to use API with webpack
-List associated items checked in bills are not finished yet
-
-It is posible to create a filter field in order to sort information or find a client by NIT when he start bill.
-
+POSIBLE IMPROVEMENTS:
+There is a issue that sometimes we have to authenticate again to use API with webpack.
+List associated items checked in bills are not finished yet.
+It is posible to create a filter field in order to sort information or find a client by NIT when he starts billing.
+Create a Register User form and save credentials in database.
 Client Server archiquecture. UI keeps logic.
 
-Thanks!
+Thanks !
 
 
 
