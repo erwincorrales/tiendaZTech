@@ -1,0 +1,14 @@
+GET http://localhost:3001/api/invoices
+###
+
+POST http://localhost:3001/api/invoices
+Content-Type: application/json
+
+{
+      "id": 1,
+      "userId": 1213231,
+      "name": "Liliana Varela",
+      "arrayItems": "\"[{\\"id\\":4,\\\"price\\\":30},{\\\"id\\\":15,\\\"price\\\":90}]\",
+      "date": "20/08/21 9:00:00am",
+      "amount": 220
+    }
