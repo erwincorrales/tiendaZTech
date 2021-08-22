@@ -38,9 +38,9 @@ const CustomerDashboard = () =>{
     },[refresh])
     
     return(
-        <>
+        <Container fluid className='pt-3'>
             <CustomerDetails nit={customerId} externalRefresh={handleRefreshCustomerList} setNit={setCustomerId}/>
-            <Container fluid className ='text-white overflow-auto'>
+            <Container fluid className ='text-white overflow-auto' style={{height: 'calc(100vh - 100px'}}>
             {
                 customers?.map((customer, key)=>(
                         <Customer customer={customer} key={key} setNit={setCustomerId} handleDelete={handleDelete}/>
@@ -48,7 +48,7 @@ const CustomerDashboard = () =>{
                 }
             </Container>
             <ToastMessage message={toastMessage} close={setToastMessage} />
-        </>
+        </Container>
     )
 }
 

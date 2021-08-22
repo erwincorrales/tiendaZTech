@@ -11,9 +11,13 @@ app.use(express.static(path.join(__dirname, 'client', 'build')))
 //use Routes
 const customersRoutes = require('./routes/customers');
 const productsRoutes = require('./routes/products');
+const vendorsRoutes = require('./routes/vendors');
+const invoicesRoutes = require('./routes/invoices');
 const auth = require('./routes/auth');
 app.use(customersRoutes);
 app.use(productsRoutes);
+app.use(vendorsRoutes);
+app.use(invoicesRoutes);
 app.use(auth);
 
 app.get('*', (_,res)=>{

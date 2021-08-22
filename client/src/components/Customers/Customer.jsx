@@ -8,9 +8,9 @@ const Customer = ({customer, setNit, handleDelete}) =>{
                 <Col xs='12' lg='3'><b>{customer?.name}</b></Col>
                 <Col xs='12' lg='1'>{customer?.nit}</Col>
                 <Col xs='12' lg='3'>{customer?.email}</Col>
-                <Col xs='12' lg='3'>{customer?.addr}</Col>
-                <Col xs='12' lg='2' className='text-right d-flex flex-nowrap'>
-                    <Button variant='success' className='pr-2' size='sm'  onClick={()=>setNit(customer.nit)}>DETAILS</Button>
+                <Col xs='6'  lg='3'>{customer?.addr}</Col>
+                <Col xs='6'  lg='2' className='d-flex flex-nowrap justify-content-end flex-fill'>
+                    <Button variant='success' className='mx-1' size='sm'  onClick={()=>setNit(customer.nit)}>DETAILS</Button>
                     <Button variant='danger' size='sm' onClick={()=>handleDelete(customer.nit)}>DELETE</Button>
                 </Col>
             </Row>

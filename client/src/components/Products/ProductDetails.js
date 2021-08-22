@@ -97,7 +97,7 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-2">
                             Brand
-                            <Form.Control type="text"name='brand' value={product?.brand} onChange={handleChange} isInvalid={errors.brand} required/>
+                            <Form.Control type="text" name='brand' value={product?.brand} onChange={handleChange} isInvalid={errors.brand} required/>
                         </Form.Group>
                         <Form.Group className="mb-2">
                             Description
@@ -111,10 +111,10 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
                             Stock
                             <Form.Control type="number" name='stock' value={product?.stock} onChange={handleChange} isInvalid={errors.stock} required/>
                         </Form.Group>
-                        <div className='d-flex justify-content-between py-2'>
+                        <div className='d-flex justify-content-between pt-4'>
                             <Button variant='outline-dark' onClick={handleToggle}>Back</Button>
                             <div className='flex-shrink-0'>
-                                <Button variant='success' className='mr-2' type='submit'>{id ? 'Edit' : 'Save' }</Button>
+                                <Button variant='success' className='mx-1' type='submit'>{id ? 'Edit' : 'Save' }</Button>
                                 <Button variant='danger' onClick={()=>handleDelete(id)}>Delete</Button>
                             </div>
                         </div>

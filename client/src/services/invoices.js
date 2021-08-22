@@ -11,9 +11,6 @@ const getInvoices = async() =>{
 }
 
 const saveInvoice = async invoice =>{
-    // axios.post(url, invoice)
-    // .then(response => response.data)
-    // .catch(error => error)
 
     try {
         const response = await axios.post(url, invoice)

@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-# tiendaZTech
-Test
-
->>>>>>> db578472c4406c25e41d3d1177b4ac665c6e2198
 Tienda ZTECH
 Nodejs, React, and MySQL integration project made from scratch. It can manage Customers, Products and Invoices. Authentication was made with jwt token and axios response interceptor
 

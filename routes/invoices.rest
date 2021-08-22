@@ -1,14 +1,18 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRXJ3aW4gQ29ycmFsZXMiLCJpYXQiOjE2Mjk2MTcxMzN9.LYrMrDk0r2zJj9FDLAX0dohhNlPMX-lYlOpglTaKPJI
+
 GET http://localhost:3001/api/invoices
+Authorization: Bearer {{token}}
 ###
 
 POST http://localhost:3001/api/invoices
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
       "id": 1,
       "userId": 1213231,
       "name": "Liliana Varela",
-      "arrayItems": "\"[{\\"id\\":4,\\\"price\\\":30},{\\\"id\\\":15,\\\"price\\\":90}]\",
+      "arrayItems": "[{\"id\":4,\"price\":30},{\"id\":15,\"price\":90}]",
       "date": "20/08/21 9:00:00am",
       "amount": 220
     }

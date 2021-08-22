@@ -1,32 +1,66 @@
-import React from 'react' 
+import React, { useState } from 'react' 
 import { Row, Col, Button } from 'react-bootstrap'
+import styled from 'styled-components'
+
+import { cartTotalItems } from '../../utils/functions'
 
 const Invoice = ({invoice, handleDelete}) =>{
+    const [ collapseShow, setCollapseShow ] = useState(false)
     
     const itemsCount = arrayitems =>{
         try{
             let count = JSON.parse(arrayitems)
-            return count.length
+            return cartTotalItems(count)
         }catch(err){
-            return 0
+            return []
         }
     }
 
     return(
-        <div className = 'rounded p-3 mt-3 bg-light shadow-sm small text-dark'>
-            <Row className='align-items-center'>
-                <Col xs='12' lg='1'>ID: {invoice?.id}</Col>
-                <Col xs='12' lg='3'><b>{invoice?.name}</b></Col>
-                <Col xs='12' lg='2'>{invoice?.userId}</Col>
-                <Col xs='12' lg='2'>Items: {itemsCount(invoice.arrayItems)}</Col>
-                <Col xs='12' lg='2'>{invoice?.date}</Col>
-                <Col xs='12' lg='1'><b>$ {invoice?.amount}</b></Col>
-                <Col xs='12' lg='1' className='text-right d-inline'>
-                    <Button variant='danger' size='sm' onClick={()=>handleDelete(invoice.id)}>DELETE</Button>
-                </Col>
-            </Row>
-        </div>
+            <DIV 
+                onMouseEnter = {()=>setCollapseShow(!collapseShow)} 
+                onMouseLeave={()=>setCollapseShow(!collapseShow)} 
+                className='m-0 p-0 bg-white border-bottom w-100 rounded small mt-2'
+            >
+                <Row className='align-items-center shadow p-3 m-0 border-bottom'>
+                    <Col xs='12' lg='1'>ID: {invoice?.id}</Col>
+                    <Col xs='5' lg='2'>{invoice?.userId}</Col>
+                    <Col xs='7' lg='3'><b>{invoice?.name}</b></Col>
+                    <Col xs='12' lg='2'>{invoice?.date}</Col>
+                    <Col xs='5' lg='2'><b>
+                        {itemsCount(invoice.arrayItems)} item(s)
+                    </b></Col>
+                    <Col xs='4' lg='1'><b>$ {invoice?.amount}</b></Col>
+                    <Col xs='3' lg='1' className='text-right'>
+                        <Button variant='danger' size='sm' onClick={()=>handleDelete(invoice.id)}>DELETE</Button>
+                    </Col>
+                </Row>
+                <div 
+                    style={{display: collapseShow ? 'block' : 'none'}} 
+                    className='bg-light p-3 m-0'
+                >
+                    {
+                        JSON.parse(invoice.arrayItems)?.map((item, key) =>(
+                            // <div>
+                                <Row className='border-bottom font-weight-bold align-items-center text-dark text-center' key={key}>
+                                    <Col>*Cant:{item.cant}</Col>
+                                    <Col>ID:{item.id}</Col>
+                                    <Col>[{ item.brand }] { item.description}</Col>
+                                    <Col><b>${item.price}</b></Col>
+                                    <Col><b>${item.price * item.cant}</b></Col>
+                                    
+                                </Row>
+                            // </div>
+                        ))
+                    }
+                </div>
+            </DIV>
+                    
     )
 }
+
+const DIV = styled.div`
+    cursor: pointer
+`
 
 export default Invoice

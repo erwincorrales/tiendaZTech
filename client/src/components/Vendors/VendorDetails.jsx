@@ -1,12 +1,12 @@
 import React , { useEffect, useState } from 'react'
 import {Button, Form, Modal} from 'react-bootstrap' 
-import customerService from '../../services/customer'
+import vendorService from '../../services/vendor'
 import ToastMessage from '../common/Toast'
 
-const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
+const VendorDetails = ({nit, externalRefresh, setNit}) =>{
     const [show, setShow] = useState(false)
-    const customerInitialState = {nit: '', name:'', addr: '', email:'', phone:''}
-    const [customer, setCustomer] = useState(customerInitialState)
+    const vendorInitialState = {nit: '', name:'', addr: '', email:'', phone:''}
+    const [vendor, setvendor] = useState(vendorInitialState)
     const errorsInitialState = {nit: false, name:false, addr: false, email:false, phone:false}
     const [errors, setErrors] = useState(errorsInitialState)
     const [toastMessage, setToastMessage] = useState('')
@@ -15,13 +15,13 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
         setShow(!show)
         if(show) {
             setNit(0)
-            setCustomer(customerInitialState)
+            setvendor(vendorInitialState)
         }
     } 
 
     const handleChange = e =>{
         const {name, value} = e.target 
-        setCustomer({...customer, [name]: value})
+        setvendor({...vendor, [name]: value})
         if(!value) setErrors({...errors, [name]: true})
         else setErrors({...errors, [name]:false})
     }
@@ -29,18 +29,18 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
     const handleSubmit = async e =>{
         e.preventDefault()
         if(nit){
-            const res = await customerService.updateCustomer(customer)
+            const res = await vendorService.updateVendor(vendor)
             if(!res.error){
-                setToastMessage('Customer Updated!')
+                setToastMessage('vendor Updated!')
                 externalRefresh()
                 handleToggle()
             }
             else
                 setToastMessage(res.error)
         }else{
-            const res = await customerService.saveCustomer(customer)
+            const res = await vendorService.saveVendor(vendor)
             if(!res.error){
-                setToastMessage('Customer Saved!')
+                setToastMessage('vendor Saved!')
                 externalRefresh()
                 handleToggle()
             }
@@ -50,37 +50,37 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
     }
 
     useEffect(()=>{
-        const fetchCustomers = async() =>{
-            const res = await customerService.getCustomer(nit)
+        const fetchVendors = async() =>{
+            const res = await vendorService.getVendor(nit)
             if(!res.error){
-                setCustomer(res.customer)
+                setvendor(res.vendor)
                 handleToggle()
             }
             else
                 setToastMessage(res.error)
         }
-        if(nit) fetchCustomers()
+        if(nit) fetchVendors()
     },[nit])
 
     return (
         <>
-            <Button className='mt-5 pt-2 justify-self-end' size='sm' variant ='dark' onClick={handleToggle}>+ Add Customer</Button>
+            <Button className='mt-5 pt-2 justify-self-end' size='sm' variant ='dark' onClick={handleToggle}>+ Add vendor</Button>
             <Modal show={show} onHide= {handleToggle} centered >
                 <Modal.Header closeButton>
-                   <h4> {nit ? 'Edit' : 'Add'} Customer</h4>
+                   <h4> {nit ? 'Edit' : 'Add'} Vendor</h4>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         Nit 
-                        <Form.Control className='mb-2' type = 'number' name='nit' onChange={handleChange} value={customer?.nit} isInvalid={errors.nit} required/>
+                        <Form.Control className='mb-2' type = 'number' name='nit' onChange={handleChange} value={vendor?.nit} isInvalid={errors.nit} required/>
                         Name 
-                        <Form.Control className='mb-2'type = 'text' name='name' onChange={handleChange} value={customer?.name} isInvalid={errors.nit} required/>
+                        <Form.Control className='mb-2'type = 'text' name='name' onChange={handleChange} value={vendor?.name} isInvalid={errors.name} required/>
                         Address 
-                        <Form.Control className='mb-2'type = 'text' name='addr' onChange={handleChange} value={customer?.addr} isInvalid={errors.nit} required/>
+                        <Form.Control className='mb-2'type = 'text' name='addr' onChange={handleChange} value={vendor?.addr} isInvalid={errors.addr} required/>
                         Email 
-                        <Form.Control className='mb-2'type = 'email' name='email' onChange={handleChange} value={customer?.email} isInvalid={errors.nit} required/>
+                        <Form.Control className='mb-2'type = 'email' name='email' onChange={handleChange} value={vendor?.email} isInvalid={errors.email} required/>
                         Phone
-                        <Form.Control type = 'number' name='phone' onChange={handleChange} value={customer?.phone} isInvalid={errors.nit} required/>
+                        <Form.Control type = 'number' name='phone' onChange={handleChange} value={vendor?.phone} isInvalid={errors.phone} required/>
                         <div className='mt-4 d-flex justify-content-between'>
                             <Button variant = 'outline-dark' size='sm' onClick={handleToggle}>Cancel</Button>
                             <Button variant='success' type='submit'>{nit ? 'Edit': 'Save'}</Button>
@@ -93,4 +93,4 @@ const CustomerDetails = ({nit, externalRefresh, setNit}) =>{
     )
 }
 
-export default CustomerDetails;
+export default VendorDetails;

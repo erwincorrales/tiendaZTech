@@ -26,7 +26,7 @@ Router.get('/api/vendors/:id', authMiddleware, async(req,res)=>{
 
 Router.post('/api/vendors', authMiddleware, async(req,res)=>{
     const user = req.body;
-    const data = `${user.nit}, '${user.name}', '${user.addr}', '${user.phone}', '${user.email}'`
+    const data = `${user.nit}, '${user.name}', '${user.addr}', '${user.email}', '${user.phone}'`
     try {
         const response = await db.consulta(`INSERT INTO vendors VALUES (${data})`)
         return res.json(response)

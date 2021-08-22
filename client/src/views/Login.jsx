@@ -3,8 +3,6 @@ import { Card, Container, Button, FormControl } from 'react-bootstrap'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
-// import './../services/axiosInterceptor'
-
 import authService from '../services/auth'
 
 const Login = () =>{
@@ -23,12 +21,11 @@ const Login = () =>{
             const credentials = { 
                 username: userInput.current.value, password: passwordInput.current.value
             }
-           
+
             const res = await authService.authenticate(credentials)
             if(!res.error) {
                 sessionStorage.setItem('e1TiendaToken', JSON.stringify(res))
-                console.log(res)
-                history.push('/main/products');
+                history.push('/main');
             }
             else
                 setErrors({username: true, password: true})
