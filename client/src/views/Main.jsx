@@ -23,9 +23,9 @@ const Main = () =>{
             <NavbarHeader/>
             <Container fluid className='m-0'>
                 <Switch>
-                    <Route exact path='/main/asa' component={ProductDashboard}/>
+                    <Route exact path='/main' component={ProductDashboard}/>
                     <Route exact path='/main/customers' component={CustomerDashboard}/>
-                    <Route exact path='/main'   component={VendorDashboard}/>
+                    <Route exact path='/main/vendors'   component={VendorDashboard}/>
                     <Route exact path='/main/invoices' component={InvoiceDashboard}/>
                     <Route component={NotFound} />
                 </Switch>
