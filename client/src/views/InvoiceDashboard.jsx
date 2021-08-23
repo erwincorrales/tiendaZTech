@@ -6,15 +6,11 @@ import ToastMessage from '../components/common/Toast'
 import Invoice from '../components/Invoices/Invoice'
 import invoicesService from '../services/invoices'
 import productService from '../services/product'
-import InvoiceItemsList from '../components/Invoices/InvoiceItemsList'
-
 
 const InvoiceDashboard = () =>{
     const [ invoices, setInvoices ] = useState([])
     const [ refresh, setRefresh ] = useState(false)
     const [ toastMessage, setToastMessage ] = useState('')
-    const [ products, setProducts] = useState([])
-    const [ invoiceSelected, setInvoiceSelected] = useState({})
 
     const handleDelete = async id =>{
         const res = await invoicesService.deleteInvoice(id)
@@ -29,13 +25,13 @@ const InvoiceDashboard = () =>{
     useEffect(()=>{
         invoicesService.getInvoices()
         .then(res => setInvoices(res.invoices))
-        .catch(error=> error.error)
+        .catch(error=> error?.error)
     },[refresh])
 
     useEffect(()=>{
         productService.getProducts()
         .then(res => setProducts(res.products))
-        .catch(error => setToastMessage(error))
+        .catch(error => setToastMessage(error?.error))
     },[])
 
     return(
@@ -46,7 +42,6 @@ const InvoiceDashboard = () =>{
                     ))
                 }
                 <ToastMessage message = {toastMessage} close= {setToastMessage} />
-                <InvoiceItemsList invoiceSelected={invoiceSelected} products={products} close={()=>setInvoiceSelected({})}/>
         </Container>
     )
 }

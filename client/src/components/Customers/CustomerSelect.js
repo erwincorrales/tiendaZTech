@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Form } from 'react-bootstrap'
+
+import styled from 'styled-components'
 
 import customerService from '../../services/customer'
 
@@ -13,15 +14,20 @@ const CustomerSelect = ({onChange, value}) =>{
     },[])
 
     return(
-        <select onChange={onChange} value={value} className='py-2' >
+        <SELECT onChange={onChange} value={value} className='p-1' >
             <option>Select Customer</option>
             {
                 customers?.map((cu, key)=>(
                     <option key={key} value={cu.nit}>{cu.name}</option>
                 ))
             }
-        </select>
+        </SELECT>
     )
 }
+
+const SELECT = styled.select`
+    appearance: none;
+    --webkit-appearance: none;
+`
 
 export default CustomerSelect

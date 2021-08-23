@@ -20,7 +20,7 @@ const ToastMessage = ({message, close})=>{
 
 const Div = styled.div`
     bottom: 80px;
-    right:20px;
+    right: 20px;
 `
 
 export default ToastMessage

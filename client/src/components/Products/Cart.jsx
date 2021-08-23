@@ -1,4 +1,4 @@
-import React, { useCallback , useState} from 'react'
+import React, { useCallback, useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 
 import CustomerSelect from '../Customers/CustomerSelect'
@@ -7,19 +7,15 @@ import ToastMessage from './../common/Toast'
 import invoicesService from '../../services/invoices'
 import { reduceCartProductsSelected } from './../../utils/functions'
 
-const Cart = ({products, cartItems, removeCartItem }) =>{
+const Cart = ({cartItems, removeCartItem }) =>{
 
     const [customerNit, setCustomerNit] = useState(0)
     const [toastMessage, setToastMessage ] = useState('')
 
     const totalAmountCalculator = useCallback( items =>{
         let total = items?.reduce((acc, it)=> acc + it.price, 0)
-        return new Intl.NumberFormat({style:'currency'}).format(total) || 0
+        return total
     },[cartItems])
-
-    const totalItemsCalc = items =>{
-        return items?.reduce((acc, it)=> acc + it.cant, 0)
-    }
 
     const handleCustomerSetNit = e =>{
         console.log('customerId', e.target.value )
@@ -49,7 +45,7 @@ const Cart = ({products, cartItems, removeCartItem }) =>{
             clearCart()
         }
         else
-            setToastMessage('There is a mistake!')
+            setToastMessage(res?.error?.sqlMessage ?? 'There is a mistake!')
     }
     
     return(
@@ -64,7 +60,7 @@ const Cart = ({products, cartItems, removeCartItem }) =>{
                  </Col>
                 <Col xs='3' md='3'>Items: {cartItems.length }</Col>
                 <Col xs='3' md='2'>
-                    <h3 className='m-0 p-0'>${totalAmountCalculator(cartItems)}</h3>
+                    <h3 className='m-0 p-0'>${new Intl.NumberFormat({style:'currency'}).format(totalAmountCalculator(cartItems)) || 0}</h3>
                 </Col>
                 <Col className='text-right justify-content-end d-flex'> 
                     <Button variant='secondary' className='mx-2' onClick={clearCart}>Clear</Button>
@@ -75,5 +71,6 @@ const Cart = ({products, cartItems, removeCartItem }) =>{
         </Container>
     )
 }
+
 
 export default Cart

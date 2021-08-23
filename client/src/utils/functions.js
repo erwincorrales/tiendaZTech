@@ -15,11 +15,11 @@ const reduceCartProductsSelected = itemsList =>{
     let result = []
     itemsList.map(item=>{
         let idx = result.findIndex(i => i.id === item.id)
-        let it = {...item}
+        let it = item
         idx > -1 ? result[idx].cant++ : result.push({...it, cant: 1})
     })
     console.log(JSON.stringify(result))
-    return Object.assign(result)
+    return result
 }
 
 //function cuenta precio total de la compra

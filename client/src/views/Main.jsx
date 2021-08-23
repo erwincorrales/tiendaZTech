@@ -26,7 +26,7 @@ const Main = () => {
     return(
         <Container fluid className='bg-dark vh-100 m-0 p-0'>
             <NavbarHeader/>
-            <Container fluid className='m-0'>
+            <Container fluid className='m-0 p-0'>
                 <Switch>
                     <Route exact path='/main' component={ProductDashboard}/>
                     <Route exact path='/main/customers' component={CustomerDashboard}/>
