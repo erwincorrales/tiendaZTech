@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import NavbarHeader from '../components/MainHeader/MainHeader'
 import { Switch, Route } from 'react-router-dom'
@@ -12,10 +12,10 @@ import InvoiceDashboard from './InvoiceDashboard'
 import NotFound from './NotFound'
 
 const Main = () =>{
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         const token = JSON.parse(sessionStorage.getItem('e1TiendaToken'))?.token
-        axios.defaults.headers['Authorization'] = token 
         console.log(token)
+        axios.defaults.headers['Authorization'] = token 
     },[])
 
     return(
