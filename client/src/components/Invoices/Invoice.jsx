@@ -31,7 +31,7 @@ const Invoice = ({invoice, handleDelete}) =>{
                         {itemsCount(invoice.arrayItems)} item(s)
                     </b></Col>
                     <Col xs='4' lg='1'><b>$ {invoice?.amount}</b></Col>
-                    <Col xs='3' lg='1' className='text-right'>
+                    <Col xs='3' lg='1' className='d-flex justify-content-end'>
                         <Button variant='danger' size='sm' onClick={()=>handleDelete(invoice.id)}>DELETE</Button>
                     </Col>
                 </Row>
@@ -41,16 +41,13 @@ const Invoice = ({invoice, handleDelete}) =>{
                 >
                     {
                         JSON.parse(invoice.arrayItems)?.map((item, key) =>(
-                            // <div>
                                 <Row className='border-bottom font-weight-bold align-items-center text-dark text-center' key={key}>
                                     <Col>*Cant:{item.cant}</Col>
                                     <Col>ID:{item.id}</Col>
-                                    <Col>[{ item.brand }] { item.description}</Col>
+                                    <Col>[{ item.brand }] {item.description}</Col>
                                     <Col><b>${item.price}</b></Col>
                                     <Col><b>${item.price * item.cant}</b></Col>
-                                    
                                 </Row>
-                            // </div>
                         ))
                     }
                 </div>

@@ -34,13 +34,13 @@ const VendorDashboard = () =>{
             <VendorDetails nit = {nit} setNit={setNit} externalRefresh = {handleRefreshVendorList}/>
             {
                 vendors?.map( (vendor, key) =>(
-                    <Row key={key} className = 'rounded bg-white p-2 mt-3 mx-2 align-items-center'>
+                    <Row key={key} className = 'rounded bg-white p-2 mt-2 mx-2 align-items-center noGutters'>
                         <Col sm='5' lg='2'>{vendor.nit}</Col>
                         <Col sm='7' lg='3'>{vendor.name}</Col>
                         <Col sm='12' lg='3'>{vendor.email}</Col>
                         <Col sm ='6' lg='2'>{vendor.addr}</Col>
-                        <Col sm='6'  lg='2'className='d-flex flex-nowrap justify-items-end'>
-                            <Button size='sm' variant='success' className = 'mx-1' onClick={()=>setNit(vendor.nit)}>DETAILS</Button>
+                        <Col sm='6'  lg='2'className='d-flex flex-nowrap justify-content-end'>
+                            <Button size='sm' variant='success' className = 'mx-2' onClick={()=>setNit(vendor.nit)}>DETAILS</Button>
                             <Button size='sm' variant = 'danger' onClick={()=>handleDelete(vendor.nit)}>DELETE</Button>
                         </Col>
                     </Row>

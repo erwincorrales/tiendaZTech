@@ -1,9 +1,8 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import NavbarHeader from '../components/MainHeader/MainHeader'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom'
 import axios from 'axios'
-// import '../services/axiosInterceptor'
 
 import ProductDashboard from './ProductsDashboard'
 import CustomerDashboard from './CustomerDashboard'
@@ -11,11 +10,17 @@ import VendorDashboard from './VendorDashboard'
 import InvoiceDashboard from './InvoiceDashboard'
 import NotFound from './NotFound'
 
-const Main = () =>{
+const Main = () => {
+    const history = useHistory()
+
     useLayoutEffect(()=>{
         const token = JSON.parse(sessionStorage.getItem('e1TiendaToken'))?.token
-        console.log(token)
-        axios.defaults.headers['Authorization'] = token 
+        if(token){
+            console.log(token)
+            axios.defaults.headers['Authorization'] = token 
+        }
+        else
+            history.push('/login')
     },[])
 
     return(
