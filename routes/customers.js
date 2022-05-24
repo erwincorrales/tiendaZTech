@@ -37,11 +37,8 @@ Router.post('/api/customers', authMiddleware, async(req,res)=>{
 
 Router.patch('/api/customers', authMiddleware, async(req,res)=>{
     const customer = req.body
-    if (!customer?.nit) {
-        console.log('error')
-        return res.json({error: 'nit Undefined!'})
-    }
-
+    if (!customer?.nit) return res.json({error: 'nit Undefined!'})
+    
     const {nit, name, addr, phone, email} = customer
     try {
         let response = await db.consulta(`UPDATE customers SET addr = '${addr}', name = '${name}', email = '${email}', phone=${phone} WHERE nit = ${nit}`)

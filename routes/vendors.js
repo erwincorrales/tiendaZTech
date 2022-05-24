@@ -37,10 +37,7 @@ Router.post('/api/vendors', authMiddleware, async(req,res)=>{
 
 Router.patch('/api/vendors', authMiddleware, async(req,res)=>{
     const user = req.body
-    if (!user?.nit) {
-        console.log('error')
-        return res.json({error: 'nit Undefined!'})
-    }
+    if (!user?.nit) return res.json({error: 'nit Undefined!'})
 
     const {nit, name, addr, phone, email} = user
     try {

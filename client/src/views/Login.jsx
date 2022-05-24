@@ -21,14 +21,11 @@ const Login = () =>{
             const credentials = { 
                 username: userInput.current.value, password: passwordInput.current.value
             }
-
             const res = await authService.authenticate(credentials)
             if(!res.error) {
                 sessionStorage.setItem('e1TiendaToken', JSON.stringify(res))
                 history.push('/main');
             }
-            else
-                setErrors({username: true, password: true})
         }else
             setErrors({username: true, password: true})
     }

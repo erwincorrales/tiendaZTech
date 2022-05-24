@@ -1,48 +1,34 @@
-import axios from 'axios'
+import { http } from "./http";
 
-const getProducts = async () =>{
-    try {
-        const response = await axios.get('/api/products')
-        return response.data
-    } catch (error) {
-        return error;
-    }
-}
+const getProducts = async () => {
+  const response = await http.get("/api/products");
+  return response.data;
+};
 
-const getProduct = async id =>{
-    try {
-        const response = await axios.get(`/api/product/${id}`)
-        return response.data
-    } catch (error) {
-        return error;
-    }
-}
+const getProduct = async (id) => {
+  const { data = {} } = await http.get(`/api/product/${id}`);
+  return data;
+};
 
-const saveProduct = async product =>{
-    try {
-        const response = await axios.post(`/api/product`, product)
-        return response.data
-    } catch (error) {
-        return error;
-    }
-}
+const saveProduct = async (product) => {
+  const { data = {} } = await http.post(`/api/product`, product);
+  return data;
+};
 
-const updateProduct = async product =>{
-    try {
-        const response = await axios.patch(`/api/product`, product)
-        return response.data
-    } catch (error) {
-        return error;
-    }
-}
+const updateProduct = async (product) => {
+  const { data = {} } = await http.patch(`/api/product`, product);
+  return data;
+};
 
-const deleteProduct = async id =>{
-    try {
-        const response = await axios.delete(`/api/product/${id}`)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
+const deleteProduct = async (id) => {
+  const { data = {} } = await http.delete(`/api/product/${id}`);
+  return data;
+};
 
-export default {getProducts, getProduct, saveProduct, updateProduct, deleteProduct}
+export default {
+  getProducts,
+  getProduct,
+  saveProduct,
+  updateProduct,
+  deleteProduct,
+};

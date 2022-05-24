@@ -1,8 +1,8 @@
-import axios from 'axios'
+import { http } from "./http";
 
 const getCustomers = async () =>{
     try {
-        const response = await axios.get(`/api/customers`);
+        const response = await http.get(`/api/customers`);
         return response.data;
     } catch (error) {
         return error
@@ -11,7 +11,7 @@ const getCustomers = async () =>{
 
 const getCustomer = async nit =>{
     try {
-        const response = await axios.get(`/api/customers/${nit}`)
+        const response = await http.get(`/api/customers/${nit}`)
         return response.data;
     } catch (error) {
         return error
@@ -20,7 +20,7 @@ const getCustomer = async nit =>{
 
 const saveCustomer = async customer =>{
     try {
-        const response = await axios.post(`/api/customers`, customer)
+        const response = await http.post(`/api/customers`, customer)
         return response.data;
     } catch (error) {
         return error
@@ -29,7 +29,7 @@ const saveCustomer = async customer =>{
 
 const updateCustomer = async customer =>{
     try {
-        const response = await axios.patch(`/api/customers`, customer)
+        const response = await http.patch(`/api/customers`, customer)
         return response.data;
     } catch (error) {
         return error
@@ -39,7 +39,7 @@ const updateCustomer = async customer =>{
 
 const deleteCustomer = async nit =>{
     try {
-        const response = await axios.delete(`/api/customers/${nit}`);
+        const response = await http.delete(`/api/customers/${nit}`);
         return response.data;
     } catch (error) {
         return error

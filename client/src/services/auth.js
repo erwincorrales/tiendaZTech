@@ -1,12 +1,8 @@
-import axios from 'axios'
+import { http } from "./http";
 
-const authenticate = async credentials =>{
-    try {
-        const response = await axios.post('/login', credentials)
-        return response.data
-    } catch (error) {
-        return error;
-    }
-}
+const authenticate = async (credentials) => {
+  const { data = {} } = await http.post("/login", credentials);
+  return data;
+};
 
-export default {authenticate} 
+export default { authenticate };

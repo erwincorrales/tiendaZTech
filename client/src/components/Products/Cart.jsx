@@ -17,11 +17,8 @@ const Cart = ({cartItems, removeCartItem }) =>{
         return total
     },[cartItems])
 
-    const handleCustomerSetNit = e =>{
-        console.log('customerId', e.target.value )
-        setCustomerNit(e.target.value)
-    }
-
+    const handleCustomerSetNit = e => setCustomerNit(e.target.value)
+    
     const clearCart = ()=>{
         removeCartItem()
         setCustomerNit(0);

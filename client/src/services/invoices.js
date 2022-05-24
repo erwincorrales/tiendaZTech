@@ -1,32 +1,19 @@
-import axios from 'axios'
-const url ='/api/invoices'
+import { http } from "./http";
+const url = "/api/invoices";
 
-const getInvoices = async() =>{
-    try {
-        const response = await axios.get(url)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
+const getInvoices = async () => {
+  const { data = [] } = await http.get(url);
+  return data;
+};
 
-const saveInvoice = async invoice =>{
+const saveInvoice = async (invoice) => {
+  const { data = {} } = await http.post(url, invoice);
+  return data;
+};
 
-    try {
-        const response = await axios.post(url, invoice)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
+const deleteInvoice = async (id) => {
+  const { data = {} } = await http.delete(`${url}/${id}`);
+  return data;
+};
 
-const deleteInvoice = async (id) =>{
-    try {
-        const response = await axios.delete(`${url}/${id}`)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
-
-export default { getInvoices, saveInvoice, deleteInvoice }
+export default { getInvoices, saveInvoice, deleteInvoice };
