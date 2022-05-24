@@ -15,12 +15,8 @@ const Main = () => {
 
     useLayoutEffect(()=>{
         const token = JSON.parse(sessionStorage.getItem('e1TiendaToken'))?.token
-        if(token){
-            console.log(token)
-            axios.defaults.headers['Authorization'] = token 
-        }
-        else
-            history.push('/login')
+        if(token) axios.defaults.headers['Authorization'] = token 
+        else history.push('/login')
     },[])
 
     return(

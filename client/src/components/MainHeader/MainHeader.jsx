@@ -9,7 +9,6 @@ const MainHeader = ()=>{
 
     const logout = () =>{
         delete axios.defaults.headers.common["Autorization"]
-        console.log('token removed')
         sessionStorage.removeItem('e1TiendaToken')
         history.replace('/login')
     }

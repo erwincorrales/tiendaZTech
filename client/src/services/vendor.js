@@ -1,50 +1,36 @@
-import axios from 'axios'
+import { http } from "./http";
 
-const url = '/api/vendors'
+const url = "/api/vendors";
 
-const getVendors = async () =>{
-    try {
-        const response = await axios.get(url)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
+const getVendors = async () => {
+  const { data = [] } = await http.get(url);
+  return data;
+};
 
-const getVendor = async nit =>{
-    try {
-        const response = await axios.get(`${url}/${nit}`)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
+const getVendor = async (nit) => {
+  const { data = {} } = await http.get(`${url}/${nit}`);
+  return data;
+};
 
-const saveVendor = async vendor =>{
-    try {
-        const response = await axios.post(url, vendor)
-        return response.data
-    } catch (error) {
-        return {error}
-    }
-}
+const saveVendor = async (vendor) => {
+  const { data = {} } = await http.post(url, vendor);
+  return data;
+};
 
-const updateVendor = async vendor =>{
-    try {
-        const response = await axios.patch(url, vendor)
-        return response.data
-    } catch (error) {
-        return {error}
-    }
-}
+const updateVendor = async (vendor) => {
+  const { data = {} } = await http.patch(url, vendor);
+  return data;
+};
 
-const deleteVendor = async nit =>{
-    try {
-        const response = await axios.delete(`${url}/${nit}`)
-        return response.data
-    } catch (error) {
-        return error
-    }
-}
+const deleteVendor = async (nit) => {
+  const { data = {} } = await http.delete(`${url}/${nit}`);
+  return data;
+};
 
-export default { getVendors, getVendor, saveVendor, updateVendor, deleteVendor }
+export default {
+  getVendors,
+  getVendor,
+  saveVendor,
+  updateVendor,
+  deleteVendor,
+};
