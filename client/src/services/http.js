@@ -3,7 +3,8 @@ import axios from "axios";
 const token = JSON.parse(sessionStorage.getItem('e1TiendaToken'))?.token ?? ''
 
 export const http = axios.create({
-    baseURL: 'http://localhost:3001'
+    baseURL: 'http://e1max.co:3001',
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
 });
 
 http.interceptors.request.use(
