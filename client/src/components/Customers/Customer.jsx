@@ -3,7 +3,7 @@ import { Row, Col, Button } from 'react-bootstrap'
 
 const Customer = ({customer, setNit, handleDelete}) =>{
     return(
-        <div className = 'rounded p-3 my-2 bg-light shadow-sm small text-dark'>
+        <div className = 'rounded p-3 mx-0 my-2 bg-light shadow-sm small text-dark'>
             <Row className='align-items-center'>
                 <Col xs='12' lg='3'><b>{customer?.name}</b></Col>
                 <Col xs='12' lg='1'>{customer?.nit}</Col>

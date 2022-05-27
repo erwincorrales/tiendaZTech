@@ -64,7 +64,7 @@ const VendorDetails = ({nit, externalRefresh, setNit}) =>{
 
     return (
         <>
-            <Button className='mt-5 pt-2 justify-self-end' size='sm' variant ='dark' onClick={handleToggle}>+ Add vendor</Button>
+            <Button className='mt-5 pt-4 justify-self-end' size='sm' variant ='dark' onClick={handleToggle}>+ Add vendor</Button>
             <Modal show={show} onHide= {handleToggle} centered >
                 <Modal.Header closeButton>
                    <h4> {nit ? 'Edit' : 'Add'} Vendor</h4>

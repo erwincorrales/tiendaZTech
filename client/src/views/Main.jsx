@@ -22,12 +22,12 @@ const Main = () => {
     return(
         <Container fluid className='bg-dark vh-100 m-0 p-0'>
             <NavbarHeader/>
-            <Container fluid className='m-0 p-0'>
+            <Container fluid className='m-0 p-0 px-3'>
                 <Switch>
                     <Route exact path='/main' component={ProductDashboard}/>
-                    <Route exact path='/main/customers' component={CustomerDashboard}/>
-                    <Route exact path='/main/vendors'   component={VendorDashboard}/>
-                    <Route exact path='/main/invoices' component={InvoiceDashboard}/>
+                    <Route path='/main/customers' component={CustomerDashboard}/>
+                    <Route path='/main/vendors'   component={VendorDashboard}/>
+                    <Route path='/main/invoices' component={InvoiceDashboard}/>
                     <Route component={NotFound} />
                 </Switch>
             </Container>

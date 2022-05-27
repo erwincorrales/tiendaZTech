@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { cartTotalItems } from '../../utils/functions'
 
-const Invoice = ({invoice, handleDelete}) =>{
+const Invoice = ({invoice, handleDelete, handleReport}) =>{
     const [ collapseShow, setCollapseShow ] = useState(false)
     
     const itemsCount = arrayitems =>{
@@ -24,14 +24,15 @@ const Invoice = ({invoice, handleDelete}) =>{
             >
                 <Row className='align-items-center shadow p-3 m-0 border-bottom'>
                     <Col xs='12' lg='1'>ID: {invoice?.id}</Col>
-                    <Col xs='5' lg='2'>{invoice?.userId}</Col>
+                    <Col xs='5' lg='1'>{invoice?.userId}</Col>
                     <Col xs='7' lg='3'><b>{invoice?.name}</b></Col>
                     <Col xs='12' lg='2'>{invoice?.date}</Col>
                     <Col xs='5' lg='2'><b>
                         {itemsCount(invoice.arrayItems)} item(s)
                     </b></Col>
                     <Col xs='4' lg='1'><b>$ {invoice?.amount}</b></Col>
-                    <Col xs='3' lg='1' className='d-flex justify-content-end'>
+                    <Col xs='3' lg='2' className='d-flex justify-content-end'>
+                        <Button variant="primary" onClick={() => handleReport(invoice?.id)}>PDF</Button>
                         <Button variant='danger' size='sm' onClick={()=>handleDelete(invoice.id)}>DELETE</Button>
                     </Col>
                 </Row>

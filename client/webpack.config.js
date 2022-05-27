@@ -4,8 +4,8 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
-    filename: "bundle.js",
     path: path.join(__dirname, "build"),
+    filename: "bundle.js",
   },
   resolve: {
     extensions: [".js", ".jsx"],

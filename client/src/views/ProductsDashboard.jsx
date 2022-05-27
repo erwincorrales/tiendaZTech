@@ -39,7 +39,7 @@ const ProductDashboard = () =>{
     return(
         <Container fluid className='d-flex flex-column position-relative m-0 p-0 pt-5 vh-100 w-100'>
             <ProductDetails id={id} setId={setId} productListRefresh={()=>setRefreshProducts(!refreshProducts)}/>
-            <div className='m-0 p-0 px-3  overflow-auto d-flex flex-wrap align-content-start align-items-center flex-fill' >
+            <div className='m-0 p-0 overflow-auto d-flex flex-wrap align-content-start align-items-center flex-fill' >
                     {
                         products?.map((item, key) =>(
                             <Product item={item} key={key} setId={setId} toCart={insertProductToCart}/>

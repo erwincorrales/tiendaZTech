@@ -88,7 +88,7 @@ const ProductDetails = ({id, setId, productListRefresh}) =>{
     
     return(
         <>
-            <StyledButton className='my-2 float-right' variant='dark' size='sm' onClick={handleToggle}>+ Add Product</StyledButton>
+            <StyledButton className='px-0 my-2 float-right' variant='dark' size='sm' onClick={handleToggle}>+ Add Product</StyledButton>
             <Modal show={show} onHide={handleToggle} centered>
                 <Modal.Header closeButton >
                     <h5>{id ? 'Edit' : 'Add'} Product</h5>

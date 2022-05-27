@@ -9,7 +9,7 @@ const NotFound = () =>{
             <div className='text-white'>
                 <h1>404 !</h1>
                 <h4 className='mb-4'>NOT FOUND</h4>
-                <Button size='sm' onClick = {()=>history.replace('/main/products')}>Back to Main</Button>
+                <Button size='sm' onClick = {()=>history.replace('/main')}>Back to Main</Button>
             </div>
         </div>
     )

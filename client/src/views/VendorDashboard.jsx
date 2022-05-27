@@ -30,11 +30,11 @@ const VendorDashboard = () =>{
     },[refreshVendorsList])
 
     return(
-        <Container fluid className='vh-100'>
+        <Container fluid className='vh-100 w-100 m-0 p-0'>
             <VendorDetails nit = {nit} setNit={setNit} externalRefresh = {handleRefreshVendorList}/>
             {
                 vendors?.map( (vendor, key) =>(
-                    <Row key={key} className = 'rounded bg-white p-2 mt-2 mx-3 align-items-center noGutters'>
+                    <Row key={key} className = 'rounded bg-white p-3 mt-2 mx-0 align-items-center noGutters'>
                         <Col sm='5' lg='2'>{vendor.nit}</Col>
                         <Col sm='7' lg='3'><b>{vendor.name}</b></Col>
                         <Col sm='12' lg='3'>{vendor.email}</Col>

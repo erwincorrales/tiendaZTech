@@ -6,6 +6,7 @@ import ToastMessage from '../components/common/Toast'
 import Invoice from '../components/Invoices/Invoice'
 import invoicesService from '../services/invoices'
 import productService from '../services/product'
+import { createReport } from '../components/Invoices/InvoicePDFReport'
 
 const InvoiceDashboard = () =>{
     const [ invoices, setInvoices ] = useState([])
@@ -35,10 +36,15 @@ const InvoiceDashboard = () =>{
     },[])
 
     return(
-        <Container fluid className='p-2 pt-5 pb-3 m-2 overflow-auto vh-100'>
+        <Container fluid className='px-0 pt-5 pb-3 my-3 overflow-auto vh-100'>
                 {
-                    invoices?.map((inv, key)=>(
-                        <Invoice key={key} invoice={inv} handleDelete={handleDelete} onClick={()=>setInvoiceSelected(inv)}/>
+                    invoices?.map((invoice, key)=>(
+                        <Invoice 
+                            key={key} 
+                            invoice={invoice} 
+                            handleDelete={handleDelete} 
+                            handleReport={invoiceId => createReport(invoices, invoiceId) }
+                        />
                     ))
                 }
                 <ToastMessage message = {toastMessage} close= {setToastMessage} />
