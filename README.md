@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-Tienda ZTECH
-=======
-Tienda ZTECH.
->>>>>>> 715a2cf76bf89e99a4a588bd97b5b4601030514e
-Nodejs, React, and MySQL integration project made from scratch. It can manage Customers, Products and Invoices. Authentication was made with jwt token and axios response interceptor
+
+Tienda ZabudTECH.
+
+Nodejs, React, and MySQL integration project made from scratch. It can manage Customers, Products and Invoices. Authentication was made with jwt token and axios response interceptor. This project was developed as a test for Zabud Technologies.
 
 CLONE REPOSITORY:
 git clone https://github.com/erwincorrales/tiendaZTech.git
